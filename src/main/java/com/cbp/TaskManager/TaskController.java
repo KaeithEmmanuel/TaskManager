@@ -16,13 +16,13 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping
+    @PostMapping("/addOne")
     public ResponseEntity<Task> addOneTask(@RequestBody Task task) {
         Task created = taskService.create(task);
         return new ResponseEntity<>(created, HttpStatus.CREATED);
     }
 
-    @GetMapping
+    @GetMapping("/findAll")
     public ResponseEntity<List<Task>> findAllTasks() {
         List<Task> taskList = taskService.getAll();
         return new ResponseEntity<>(taskList, HttpStatus.OK);
