@@ -19,6 +19,11 @@ pipeline {
                 git branch: 'master', url: 'https://github.com/KaeithEmmanuel/TaskManager'
             }
         }
+        stage('Package (Maven)') {
+            steps {
+                bat "mvn -B -DskipTests package"
+            }
+        }
 
         stage('Build Docker Image') {
                     steps {
