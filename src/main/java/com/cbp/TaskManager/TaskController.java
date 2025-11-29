@@ -28,19 +28,19 @@ public class TaskController {
         return new ResponseEntity<>(taskList, HttpStatus.OK);
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/findById")
     public ResponseEntity<Task> findById(@PathVariable("id") Long id) {
         Task task = taskService.getById(id);
         return new ResponseEntity<>(task, HttpStatus.OK);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/deleteById")
     public ResponseEntity<Void> deleteById(@PathVariable("id") Long id) {
         taskService.delete(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/updateById")
     public ResponseEntity<Task> updateTask(@PathVariable("id") Long id, @RequestBody Task task) {
         Task updated = taskService.update(id, task);
         return new ResponseEntity<>(updated, HttpStatus.OK);
