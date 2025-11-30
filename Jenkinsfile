@@ -41,6 +41,17 @@ pipeline {
                 bat "docker build -t ${FULL_IMAGE} ."
             }
         }
+        stages('Run Docker Container (local)') {
+            steps {
+                script {
+                    bat """
+                    docker run -d --name ${APP_NAME}-container -p ${NODE_PORT}:${APP_PORT} \\
+                        -e APP_PORT=${APP_PORT} \\
+                        ${FULL_IMAGE}
+                    """
+                }
+            }
+        }
 
         stage('Run Docker Container (local) - optional') {
             steps {
