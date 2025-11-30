@@ -41,7 +41,7 @@ pipeline {
                 bat "docker build -t ${FULL_IMAGE} ."
             }
         }
-        stages('Run Docker Container (local)') {
+        stage('Run Docker Container (local)') {
             steps {
                 script {
                     bat """
